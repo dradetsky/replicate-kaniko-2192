@@ -1,0 +1,2 @@
+FROM scratch as one
+RUN --mount=from=docker.io/busybox:musl,dst=/usr/ ["/busybox/busybox", "sh", "-c", "/busybox/mkdir -p /kaniko && /busybox/chmod 777 /kaniko"]

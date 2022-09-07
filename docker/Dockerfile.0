@@ -1,0 +1,5 @@
+FROM scratch as one
+RUN --mount=from=busybox:musl,dst=/usr/ ["busybox", "sh", "-c", "ls -la /usr/bin > /output"]
+FROM busybox:musl
+COPY --from=one /output /
+CMD cat /output

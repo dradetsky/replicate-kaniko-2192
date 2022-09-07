@@ -1,0 +1,5 @@
+FROM scratch as one
+RUN --mount=from=docker.io/busybox:musl,dst=/usr/ ["/busybox/busybox", "sh", "-c", "/busybox/find / >/output"]
+FROM busybox:musl as two
+COPY --from=one /output /
+CMD cat /output
